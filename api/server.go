@@ -1,6 +1,7 @@
 package api
 
 import (
+	"auth_server/api/proto"
 	"auth_server/internal/services"
 	"auth_server/store"
 	"fmt"
@@ -21,7 +22,7 @@ func GrpcServer() {
 	}
 	var opts []grpc.ServerOption
 	svr := grpc.NewServer(opts...)
-	RegisterAuthServer(svr, &authSvr{})
+	proto.RegisterAuthServer(svr, &authSvr{})
 	err = svr.Serve(lis)
 	if err != nil {
 		panic(err)
