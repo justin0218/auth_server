@@ -47,6 +47,7 @@ func (s *authSvr) VerifyToken(ctx context.Context, req *proto.VerifyTokenReq) (r
 	} else if req.TokenType == proto.TokenType_CLIENT {
 		uid, e := jwt.VerifyToken(req.Token, s.conf.Get().Jwt.ClientSecret)
 		if e != nil {
+			err = e
 			ret.TokenError = proto.TokenError_EXPIRED
 			return
 		}
