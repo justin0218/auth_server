@@ -1,7 +1,6 @@
 package main
 
 import (
-	"auth_server/api"
 	"auth_server/store"
 	"fmt"
 	"time"
@@ -15,7 +14,7 @@ func main() {
 	}
 	log := new(store.Log)
 	//go etcd.Register()
-	go api.GrpcServer()
+	//go api.GrpcServer()
 	log.Get().Debug("server started at %v", time.Now())
 	fmt.Printf("server started at %v \n", time.Now())
 	select {}
